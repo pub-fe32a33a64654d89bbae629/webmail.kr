@@ -10,6 +10,8 @@
       font-family: 'Noto Sans KR', sans-serif;
       background: linear-gradient(135deg, #dff3ff, #fff3e0);
     }
+
+    /* HERO */
     .hero {
       background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1400&q=80');
       background-size: cover;
@@ -21,28 +23,43 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(0, 0, 0, 0.45); /* darker overlay for readability */
+      background: rgba(0, 0, 0, 0.6); /* stronger overlay for readability */
     }
+    .hero h1, .hero p {
+      position: relative;
+      z-index: 10;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.5); /* subtle shadow */
+    }
+    .hero h1 {
+      font-size: 2.25rem; /* slightly bigger */
+      font-weight: 800;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+
+    /* MAIN */
     .main-area {
-      min-height: calc(100vh - 20vh - 56px); /* adjust for smaller hero height */
+      min-height: calc(100vh - 20vh - 56px); /* adjust for hero and footer */
     }
     .feature-title { font-size: 0.9rem; font-weight: 600; }
     .feature-desc { font-size: 0.75rem; color: #4b5563; line-height: 1.05; }
-    .feature-icon { width: 4rem; /* smaller icon */ }
+    .feature-icon { width: 4rem; } /* smaller icons */
 
-    /* Make login input boxes larger */
+    /* LOGIN FORM */
     .login-input {
-      padding: 0.75rem 1rem; /* bigger padding */
-      font-size: 1rem;       /* bigger text */
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
     }
     .login-button {
       padding: 0.75rem 1rem;
       font-size: 1rem;
     }
 
-    /* Optional: reduce background below hero if you add more sections */
+    /* Optional: smaller background for main-area sections */
     .main-area-bg {
-      background-size: 50%; /* smaller background if used */
+      background-size: 50%;
       background-position: top right;
     }
   </style>
@@ -52,8 +69,8 @@
   <!-- HERO -->
   <section class="hero flex items-center justify-center text-center text-white relative">
     <div class="z-10 px-4">
-      <h1 class="text-2xl md:text-3xl font-bold mb-1">당신의 모든 이메일을 한 곳에서</h1>
-      <p class="text-sm md:text-base">간편하고 안전한 한국형 웹메일 서비스</p>
+      <h1 class="mb-1">당신의 모든 이메일을 한 곳에서</h1>
+      <p>간편하고 안전한 한국형 웹메일 서비스</p>
     </div>
   </section>
 
