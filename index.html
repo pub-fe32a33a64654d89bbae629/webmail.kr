@@ -1,95 +1,100 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>이메일 포털 | Korean Webmail</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.4/dist/tailwind.min.css" rel="stylesheet">
   <style>
-    body {
-      background: linear-gradient(135deg, #dff3ff, #fff3e0);
-      font-family: 'Noto Sans KR', sans-serif;
-    }
+    body { font-family: 'Noto Sans KR', sans-serif; background: linear-gradient(135deg,#dff3ff,#fff3e0); }
     .hero {
       background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1400&q=80');
-      background-size: cover;
-      background-position: center;
-      position: relative;
+      background-size: cover; background-position: center; position: relative;
     }
     .hero::after {
-      content: "";
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.35);
+      content:""; position:absolute; inset:0; background: rgba(0,0,0,0.36);
     }
+    /* Ensure the main area fits between hero and footer on most viewports */
+    .main-area {
+      min-height: calc(100vh - 30vh - 56px); /* 30vh hero + 56px footer */
+    }
+    /* small, compact text spacing for the left features */
+    .feature-title { font-size: 0.95rem; font-weight: 600; }
+    .feature-desc { font-size: 0.78rem; color: #4b5563; line-height:1.05; }
   </style>
 </head>
-<body class="text-gray-800 overflow-x-hidden">
+<body class="text-gray-800">
 
-  <!-- Hero Section -->
-  <section class="hero h-[45vh] flex flex-col justify-center items-center text-center text-white relative">
+  <!-- HERO (short) -->
+  <section class="hero h-[30vh] flex items-center justify-center text-center text-white relative">
     <div class="z-10 px-4">
-      <h1 class="text-4xl md:text-5xl font-bold mb-3">당신의 모든 이메일을 한 곳에서</h1>
-      <p class="text-lg md:text-xl mb-5">간편하고 안전한 한국형 웹메일 서비스</p>
-      <a href="#main" class="bg-blue-500 hover:bg-blue-600 px-5 py-2.5 rounded-full font-semibold transition">시작하기</a>
+      <h1 class="text-2xl md:text-3xl font-bold mb-1">당신의 모든 이메일을 한 곳에서</h1>
+      <p class="text-sm md:text-base mb-2">간편하고 안전한 한국형 웹메일 서비스</p>
+      <a href="#main" class="inline-block bg-blue-500 hover:bg-blue-600 text-white text-xs md:text-sm px-4 py-2 rounded-full">시작하기</a>
     </div>
   </section>
 
-  <!-- Info + Login Row -->
-  <section id="main" class="py-12 bg-white">
-    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-8 items-center">
+  <!-- MAIN: icons left, login right (fits on one screen) -->
+  <section id="main" class="main-area bg-white flex items-center">
+    <div class="max-w-6xl mx-auto w-full px-4">
+      <!-- two-column layout on md+, stacked on small screens -->
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
 
-      <!-- Info Column -->
-      <div class="space-y-6 md:pr-8">
-        <div class="flex items-center space-x-4">
-          <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="보안" class="w-8 opacity-90">
-          <div>
-            <h3 class="text-base font-semibold">강력한 보안</h3>
-            <p class="text-xs text-gray-600 leading-snug">최신 암호화 기술로 메일을 안전하게 보호합니다.</p>
+        <!-- LEFT: Features (stacked, compact) -->
+        <div class="md:w-1/2">
+          <div class="flex flex-col gap-3 md:gap-4">
+            <div class="flex items-start gap-3">
+              <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="보안" class="w-6 mt-1 opacity-90">
+              <div>
+                <div class="feature-title">강력한 보안</div>
+                <div class="feature-desc">최신 암호화 기술로 메일을 안전하게 보호합니다.</div>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <img src="https://cdn-icons-png.flaticon.com/512/1827/1827504.png" alt="간편함" class="w-6 mt-1 opacity-90">
+              <div>
+                <div class="feature-title">간편한 관리</div>
+                <div class="feature-desc">모든 계정을 한 번에 관리하고 빠르게 검색하세요.</div>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <img src="https://cdn-icons-png.flaticon.com/512/1029/1029183.png" alt="연동" class="w-6 mt-1 opacity-90">
+              <div>
+                <div class="feature-title">스마트 연동</div>
+                <div class="feature-desc">모바일과 PC에서 동일한 환경으로 접속 가능합니다.</div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="flex items-center space-x-4">
-          <img src="https://cdn-icons-png.flaticon.com/512/1827/1827504.png" alt="간편함" class="w-8 opacity-90">
-          <div>
-            <h3 class="text-base font-semibold">간편한 관리</h3>
-            <p class="text-xs text-gray-600 leading-snug">모든 계정을 한 번에 관리하고 빠르게 검색하세요.</p>
+
+        <!-- RIGHT: Compact Login (centered vertically) -->
+        <div class="md:w-1/2 flex justify-end">
+          <div class="bg-gray-50 shadow-md rounded-2xl p-4 md:p-6 w-full max-w-xs">
+            <h2 class="text-lg font-bold text-center mb-3">로그인</h2>
+            <form class="space-y-2">
+              <input type="email" placeholder="이메일 주소" class="w-full border rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-300 outline-none">
+              <input type="password" placeholder="비밀번호" class="w-full border rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-300 outline-none">
+              <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 rounded-md text-sm">로그인</button>
+            </form>
+            <div class="text-center text-xs text-gray-500 mt-2">
+              계정이 없으신가요? <a href="#" class="text-blue-500 hover:underline">회원가입</a>
+            </div>
           </div>
         </div>
-        <div class="flex items-center space-x-4">
-          <img src="https://cdn-icons-png.flaticon.com/512/1029/1029183.png" alt="연동" class="w-8 opacity-90">
-          <div>
-            <h3 class="text-base font-semibold">스마트 연동</h3>
-            <p class="text-xs text-gray-600 leading-snug">모바일, PC 어디서나 동일한 환경으로 접속 가능합니다.</p>
-          </div>
-        </div>
+
       </div>
-
-      <!-- Login Box -->
-      <div class="bg-gray-50 shadow-md rounded-2xl p-6 md:p-8 max-w-sm mx-auto md:mx-0">
-        <h2 class="text-xl font-bold text-center mb-4">로그인</h2>
-        <form class="space-y-3">
-          <input type="email" placeholder="이메일 주소" class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-400 outline-none text-sm">
-          <input type="password" placeholder="비밀번호" class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-400 outline-none text-sm">
-          <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded-lg transition text-sm">로그인</button>
-        </form>
-        <div class="text-center text-xs text-gray-500 mt-3">
-          계정이 없으신가요? <a href="#" class="text-blue-500 hover:underline">회원가입</a>
-        </div>
-      </div>
-
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-300 text-center py-4 text-xs">
-    <p>© 2025 Korean Webmail Service. 모든 권리 보유.</p>
-    <div class="flex justify-center space-x-3 mt-1">
-      <a href="#" class="hover:text-white">개인정보처리방침</a>
-      <span>|</span>
-      <a href="#" class="hover:text-white">이용약관</a>
-      <span>|</span>
-      <a href="#" class="hover:text-white">고객센터</a>
+  <!-- FOOTER (small) -->
+  <footer class="bg-gray-900 text-gray-300 text-center py-3" style="height:56px;">
+    <div class="max-w-6xl mx-auto px-4 flex items-center justify-center h-full">
+      <div class="text-xs">
+        © 2025 Korean Webmail Service. 모든 권리 보유. &nbsp; <span class="mx-2">|</span>
+        <a href="#" class="hover:text-white">개인정보처리방침</a> <span class="mx-2">|</span> <a href="#" class="hover:text-white">이용약관</a>
+      </div>
     </div>
   </footer>
 
