@@ -9,47 +9,27 @@
     body {
       font-family: 'Noto Sans KR', sans-serif;
       background: linear-gradient(135deg, #dff3ff, #fff3e0);
-    }
-    .hero {
-      background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1400&q=80');
-      background-size: cover;
-      background-position: center;
-      position: relative;
-      height: 20vh; /* smaller height */
-    }
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.45); /* darker overlay for readability */
-    }
-    .main-area {
-      min-height: calc(100vh - 20vh - 56px); /* adjust for smaller hero height */
+      color: #333;
     }
     .feature-title { font-size: 0.95rem; font-weight: 600; }
-    .feature-desc { font-size: 0.78rem; color: #4b5563; line-height: 1.05; }
+    .feature-desc { font-size: 0.78rem; color: #4b5563; line-height: 1.1; }
   </style>
 </head>
-<body class="text-gray-800">
-
-  <!-- HERO (smaller background) -->
-  <section class="hero flex items-center justify-center text-center text-white relative">
-    <div class="z-10 px-4">
-      <h1 class="text-2xl md:text-3xl font-bold mb-1">당신의 모든 이메일을 한 곳에서</h1>
-      <p class="text-sm md:text-base">간편하고 안전한 한국형 웹메일 서비스</p>
-    </div>
-  </section>
+<body>
 
   <!-- MAIN: icons left, login right -->
-  <section id="main" class="main-area bg-white flex items-center">
+  <section id="main" class="min-h-[90vh] bg-white flex items-center">
     <div class="max-w-6xl mx-auto w-full px-4">
-      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
 
         <!-- LEFT FEATURES -->
         <div class="md:w-1/2">
-          <div class="flex flex-col gap-3 md:gap-4">
+          <h1 class="text-2xl md:text-3xl font-bold mb-6 text-gray-800">
+            당신의 모든 이메일을 한 곳에서
+          </h1>
+          <div class="flex flex-col gap-4 md:gap-5">
             <div class="flex items-start gap-3">
-              <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="보안" class="w-6 mt-1 opacity-90">
+              <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="보안" class="w-7 mt-1 opacity-90">
               <div>
                 <div class="feature-title">강력한 보안</div>
                 <div class="feature-desc">최신 암호화 기술로 메일을 안전하게 보호합니다.</div>
@@ -57,7 +37,7 @@
             </div>
 
             <div class="flex items-start gap-3">
-              <img src="https://cdn-icons-png.flaticon.com/512/1827/1827504.png" alt="간편함" class="w-6 mt-1 opacity-90">
+              <img src="https://cdn-icons-png.flaticon.com/512/1827/1827504.png" alt="간편함" class="w-7 mt-1 opacity-90">
               <div>
                 <div class="feature-title">간편한 관리</div>
                 <div class="feature-desc">모든 계정을 한 번에 관리하고 빠르게 검색하세요.</div>
@@ -65,7 +45,7 @@
             </div>
 
             <div class="flex items-start gap-3">
-              <img src="https://cdn-icons-png.flaticon.com/512/1029/1029183.png" alt="연동" class="w-6 mt-1 opacity-90">
+              <img src="https://cdn-icons-png.flaticon.com/512/1029/1029183.png" alt="연동" class="w-7 mt-1 opacity-90">
               <div>
                 <div class="feature-title">스마트 연동</div>
                 <div class="feature-desc">모바일과 PC에서 동일한 환경으로 접속 가능합니다.</div>
@@ -76,14 +56,14 @@
 
         <!-- RIGHT LOGIN -->
         <div class="md:w-1/2 flex justify-end">
-          <div class="bg-gray-50 shadow-md rounded-2xl p-4 md:p-6 w-full max-w-xs">
-            <h2 class="text-lg font-bold text-center mb-3">로그인</h2>
-            <form class="space-y-2">
+          <div class="bg-gray-50 shadow-md rounded-2xl p-6 w-full max-w-xs">
+            <h2 class="text-lg font-bold text-center mb-4">로그인</h2>
+            <form class="space-y-3">
               <input type="email" placeholder="이메일 주소" class="w-full border rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-300 outline-none">
               <input type="password" placeholder="비밀번호" class="w-full border rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-300 outline-none">
               <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 rounded-md text-sm">로그인</button>
             </form>
-            <div class="text-center text-xs text-gray-500 mt-2">
+            <div class="text-center text-xs text-gray-500 mt-3">
               계정이 없으신가요? <a href="#" class="text-blue-500 hover:underline">회원가입</a>
             </div>
           </div>
@@ -94,14 +74,12 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="bg-gray-900 text-gray-300 text-center py-3" style="height:56px;">
-    <div class="max-w-6xl mx-auto px-4 flex items-center justify-center h-full">
-      <div class="text-xs">
-        © 2025 Korean Webmail Service. 모든 권리 보유. &nbsp; <span class="mx-2">|</span>
-        <a href="#" class="hover:text-white">개인정보처리방침</a>
-        <span class="mx-2">|</span>
-        <a href="#" class="hover:text-white">이용약관</a>
-      </div>
+  <footer class="bg-gray-900 text-gray-300 text-center py-3">
+    <div class="text-xs">
+      © 2025 Korean Webmail Service. 모든 권리 보유. &nbsp; <span class="mx-2">|</span>
+      <a href="#" class="hover:text-white">개인정보처리방침</a>
+      <span class="mx-2">|</span>
+      <a href="#" class="hover:text-white">이용약관</a>
     </div>
   </footer>
 
