@@ -17,35 +17,37 @@
       background-size: cover;
       background-position: center;
       position: relative;
-      height: 20vh; /* smaller height */
+      height: 20vh;
     }
     .hero::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(0, 0, 0, 0.6); /* stronger overlay for readability */
+      background: rgba(0, 0, 0, 0.6); /* stronger overlay */
     }
     .hero h1, .hero p {
       position: relative;
       z-index: 10;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.5); /* subtle shadow */
+      text-shadow: 0 2px 6px rgba(0,0,0,0.5);
     }
     .hero h1 {
-      font-size: 2.25rem; /* slightly bigger */
+      font-size: 2.25rem;
       font-weight: 800;
     }
     .hero p {
-      font-size: 1.1rem;
-      font-weight: 500;
+      font-size: 1.25rem;       /* bigger for readability */
+      font-weight: 600;         /* semi-bold */
+      color: #ffffff;           /* ensure white */
+      text-shadow: 0 2px 6px rgba(0,0,0,0.6); /* stronger shadow */
     }
 
     /* MAIN */
     .main-area {
-      min-height: calc(100vh - 20vh - 56px); /* adjust for hero and footer */
+      min-height: calc(100vh - 20vh - 56px);
     }
     .feature-title { font-size: 0.9rem; font-weight: 600; }
     .feature-desc { font-size: 0.75rem; color: #4b5563; line-height: 1.05; }
-    .feature-icon { width: 4rem; } /* smaller icons */
+    .feature-icon { width: 4rem; }
 
     /* LOGIN FORM */
     .login-input {
@@ -55,12 +57,6 @@
     .login-button {
       padding: 0.75rem 1rem;
       font-size: 1rem;
-    }
-
-    /* Optional: smaller background for main-area sections */
-    .main-area-bg {
-      background-size: 50%;
-      background-position: top right;
     }
   </style>
 </head>
@@ -74,7 +70,7 @@
     </div>
   </section>
 
-  <!-- MAIN: icons left, login right -->
+  <!-- MAIN -->
   <section id="main" class="main-area bg-white flex items-center">
     <div class="max-w-6xl mx-auto w-full px-4">
       <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
